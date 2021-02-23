@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.oneandone.maven.poms</groupId>
+        <artifactId>foss-parent</artifactId>
+        <version>1.6.1</version>
+    </parent>
+    <groupId>com.github.mfriedenhagen</groupId>
+    <artifactId>plugin-classpath-maven-3-and-4</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>plugin-classpath-maven-3-and-4</name>
+    <description>Test project for differences between Maven 3 and 4 plugin classpath</description>
+    <url>https://github.com/mfriedenhagen/plugin-classpath-maven-3-and-4</url>
+
+    <scm>
+        <developerConnection>scm:git:https://github.com/mfriedenhagen/plugin-classpath-maven-3-and-4.git
+        </developerConnection>
+        <url>https://github.com/mfriedenhagen/plugin-classpath-maven-3-and-4</url>
+    </scm>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/mfriedenhagen/plugin-classpath-maven-3-and-4</url>
+    </issueManagement>
+
+    <properties>
+        <enforcer.skip>true</enforcer.skip>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.18.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>net.rumati.maven.plugins</groupId>
+                    <artifactId>velocity-maven-plugin</artifactId>
+                    <version>0.3.1</version>
+                    <executions>
+                        <execution>
+                            <id>default-velocity</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>velocity</goal>
+                            </goals>
+                            <configuration>
+                                <template>/net/oneandone/maven/poms/fossconfigs/jenkins-description.html.vm</template>
+                                <outputFile>${project.build.directory}/jenkins-description.html</outputFile>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>net.rumati.maven.plugins</groupId>
+                <artifactId>velocity-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
